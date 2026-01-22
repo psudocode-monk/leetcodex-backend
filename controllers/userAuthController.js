@@ -1,5 +1,5 @@
 const User = require("../models/user");
-const validate = require("../utils/validator");
+const { validate } = require("../utils/validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -58,8 +58,10 @@ async function login(req, res) {
 }
 
 async function logout(req, res) {
-  res.clearCookie("token");
-  return res.status(200).json({ message: "Logout successful" });
+  try {
+    res.clearCookie("token");
+    return res.status(200).json({ message: "Logout successful" });
+  } catch (error) {}
 }
 
 async function getProfile(req, res) {

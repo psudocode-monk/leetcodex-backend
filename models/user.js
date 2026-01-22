@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema(
       default: "user",
     },
     problemSolved: {
-      type: [string],
+      type: [String],
     },
     password: {
       type: String,
